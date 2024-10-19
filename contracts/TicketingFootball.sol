@@ -68,6 +68,7 @@ contract FootballTicketBooking is ERC721 {
         paused = false;
     }
 
+    function add
     function purchaseTicket(uint256 matchId) public payable whenNotPaused {
         if (msg.value != ticketPrice) {
             revert IncorrectEtherSent();
