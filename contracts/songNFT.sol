@@ -47,5 +47,22 @@ contract SongNFT is ERC721URIStorage, Ownable {
 
         return newSongId;
     }
-    
+
+    // Get details of a specific Song NFT
+    function getSongDetails(uint256 tokenId)
+        public
+        view
+        returns (
+            string memory title,
+            string memory artist,
+            string memory album,
+            string memory genre,
+            string memory licenseType
+        )
+    {
+        require(_exists(tokenId), "SongNFT: Query for nonexistent token");
+
+        SongMetadata memory song = _songDetails[tokenId];
+        return (song.title, song.artist, song.album, song.genre, song.licenseType);
+    }
 }
